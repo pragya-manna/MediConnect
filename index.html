@@ -1,209 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MediConnect- Connecting you to trusted ca</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediConnect - Login</title>
+  <link rel="stylesheet" href="login.css" />
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="images/Logo.png">
-            <span>MediConnect</span>
-        </div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="#">Appointment</a>
-            <a href="#">Patient Dashboard</a>
-            <a href="#">Calculator</a>
-            <a href="#">Log in</a>
-            <a class="signup" href="#">Sign up</a>
-        </nav>
-    </header>
+  <div class="login-container">
+    <h1>MediConnect</h1>
+    <p class="tagline">Connecting You to Trusted Care</p>
 
-    <section class="hero">
-        <div class="overlay">
-            <h1>Connecting You to Trusted Care</h1>
-            <p>Easy Doctor access, personal dashboards, and smart health guidance.</p>
-            <button class="primary">Get Started</button>
-        </div>
-    </section>
-
-    <section class="about">
-        <div class="about-box">
-        <h2>About Us</h2>
-        <p>
-            <strong>MediConnect</strong> is an online healthcare platform designed to make accessing medical care easy and convenient. We help patients find the right doctors, book appointments seamlessly, and manage their personal health in one secure place. With a personalized dashboard, health calculators, and an integrated AI chatbot, MediConnect empowers users to take control of their health. Our goal is to reduce clinic wait times, simplify healthcare journeys, and make trusted medical support available to everyone, anytime.
-        </p>
-        </div>
-    </section>
-
-    <section class="video">
-  <div class="video-container">
-    <h2>Watch How MediConnect Works</h2>
-    <video controls>
-      <source src="images/MediConnectVideo.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</section>
-
-    <section class="features">
-    <h2>Our Features</h2>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <img src="images/Instantbooking.webp" alt="Instant Booking" />
-        <h3>Instant Booking</h3>
-        <p>Book appointments with top doctors in just a few clicks.</p>
-      </div>
-      <div class="feature-card">
-        <img src="images/easyaccess.png" alt="Easy Access" />
-        <h3>Easy Access</h3>
-        <p>Secure dashboards and records, available anytime, anywhere.</p>
-      </div>
-      <div class="feature-card">
-        <img src="images/healthtools.png" alt="Health Tools" />
-        <h3>Health Tools</h3>
-        <p>Use our calculators and trackers to manage your health.</p>
-      </div>
-      <div class="feature-card">
-        <img src="images/ai.png" alt="AI Help" />
-        <h3>AI for Instant Help</h3>
-        <p>24/7 chatbot guidance for your health questions.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="contact">
-    <h2>Contact Us</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
+    <form id="login-form">
+      <h5 class="email">Enter you email or username:</h2>
+      <input type="email" id="email" placeholder="Choose a username (letters,numbers, underscores)" required />
+      <p class="username">Username must be at least 3 characters long and contain only letters, numbers, and underscores.</p>
+      <h5 class="password">Enter your password:</h2>
+      <input type="password" id="password" placeholder="create a password (min 8 characters)" required />
+      <p class="pass">Password must be at least 8 characters long.</p>
+      <h5>Confirm your password:</h5>
+      <input type="password" id="password" placeholder="Confirm your password">
+      <button type="submit" class="primary-btn">Create Account</button>
     </form>
-  </section>
 
-  <section class="faq">
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-item">
-      <button class="faq-question">What is MediConnect?</button>
-      <div class="faq-answer">
-        <p>MediConnect is an online platform for easy doctor access, booking, and personal health management.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question">Is my data secure?</button>
-      <div class="faq-answer">
-        <p>Yes, we prioritize data security with encryption and secure storage.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question">How do I book an appointment?</button>
-      <div class="faq-answer">
-        <p>Simply sign up, log in, and use our easy booking feature in the dashboard.</p>
-      </div>
-    </div>
-  </section>
+    <div class="separator">OR</div>
+    <button id="googleLoginBtn" class="google-btn">Continue with Google</button>
+    <p class="login">Already have an account?
+      <a href="">Login</a>
+    </p>
 
-
-    <section class="creators">
-    <h2>Our Creators</h2>
-    <div class="creator-grid">
-      <div class="creator-card">
-        <img src="images/pragya.jpeg" alt="Pragya Manna" />
-        <p><strong>Pragya Manna</strong></p>
-      </div>
-      <div class="creator-card">
-        <img src="images/kasturi.jpeg" alt="Kasturi Bangar" />
-        <p><strong>Kasturi Bangar</strong></p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 MediConnect. All rights reserved.</p>
-  </footer>
-
-   <!-- Chatbot Icon -->
-<div id="chatbot-icon">
-    <img src="images/Chatbot.png"/>
-</div>
-
-<!-- Chatbot Window -->
-<div id="chatbot-window">
-  <div id="chatbot-header">
-    MediConnect
-    <button id="close-btn">&times;</button>
+    
   </div>
-  <div id="chatbot-messages">
-    <div class="message model">Hello! How can I help you?</div>
-  </div>
-  <div id="chatbot-input">
-    <input type="text" id="user-input" placeholder="Type your question...">
-    <button id="send-btn">➤</button>
-  </div>
-</div>
-  <script src="script.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-  const chatbotIcon = document.getElementById('chatbot-icon');
-  const chatbotWindow = document.getElementById('chatbot-window');
-  const closeBtn = document.getElementById('close-btn');
-  const sendBtn = document.getElementById('send-btn');
-  const userInput = document.getElementById('user-input');
-  const messages = document.getElementById('chatbot-messages');
 
-  chatbotIcon.addEventListener('click', () => {
-    chatbotWindow.style.display = 'flex';
-  });
+  <script src="login.js"></script>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-  closeBtn.addEventListener('click', () => {
-    chatbotWindow.style.display = 'none';
-  });
+body {
+  background-color: #121212;
+  color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-  sendBtn.addEventListener('click', handleSend);
-  userInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') handleSend();
+.login-container {
+  background-color: #1e1e1e;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.8);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
 
-  });
+.login-container h1 {
+  color: #4ea8ff;
+  margin-bottom: 10px;
+  font-size: 2em;
+}
 
-  function appendMessage(role, text) {
-    const msgDiv = document.createElement('div');
-    msgDiv.classList.add('message', role);
-    msgDiv.textContent = text;
-    messages.appendChild(msgDiv);
-    messages.scrollTop = messages.scrollHeight;
-  }
+.tagline {
+  margin-bottom: 30px;
+  color: #aaa;
+  font-size: 0.95em;
+}
+.email{
+  text-align:center;
+}
+.username{
+  font-size:small;
+}
+.password{
+  text-align:center;
+}
+.pass{
+  font-size:small;
+}
 
-  async function handleSend() {
-    const question = userInput.value.trim();
-    if (!question) return;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 
-    appendMessage('user', question);
-    userInput.value = '';
-    userInput.focus();
+input {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2a2a2a;
+  color: #eee;
+  font-size: 1em;
+}
 
-    appendMessage('model', 'Typing...');
+input::placeholder {
+  color: #777;
+}
 
-    try {
-      const res = await fetch("http://localhost:5000/ask", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question }),
+.primary-btn {
+  background-color: #4ea8ff;
+  border: none;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.primary-btn:hover {
+  background-color: #3790e6;
+}
+
+.separator {
+  margin: 20px 0;
+  color: #aaa;
+  position: relative;
+}
+
+.separator::before,
+.separator::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background-color: #444;
+}
+
+.separator::before {
+  left: 0;
+}
+
+.separator::after {
+  right: 0;
+}
+
+.google-btn {
+  background-color: #4285F4;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.google-btn:hover {
+  background-color: #357ae8;
+}
+
+.register-link {
+  margin-top: 20px;
+  font-size: 0.95em;
+}
+
+.register-link a {
+  color: #4ea8ff;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+.login{
+  margin-top:10px;
+}
+
+  </style>
+<!-- Firebase SDKs -->
+
+<script type="module">
+  // Import necessary Firebase SDKs
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-analytics.js";
+  import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+  // ✅ Correct Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyBJ5ycgTWuE5lLG7GfF-Ribt6QI6zR449s",
+    authDomain: "mediconnect-c67be.firebaseapp.com",
+    projectId: "mediconnect-c67be",
+    storageBucket: "mediconnect-c67be.appspot.com", // ✅ FIXED
+    messagingSenderId: "736093482154",
+    appId: "1:736093482154:web:58d9cf14ccbb01e94ff4d3",
+    measurementId: "G-C6CZLFQPDQ"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
+  // Add event listener for button (make sure the ID matches your HTML button)
+  document.getElementById("googleLoginBtn").addEventListener("click", () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        alert("Welcome, " + user.displayName);
+        console.log(user); // You can redirect or save user info from here
+      })
+      .catch((error) => {
+        alert("Google sign-in failed: " + error.message);
+        console.error(error);
       });
-
-      const data = await res.json();
-      messages.lastChild.textContent = data.answer;
-
-    } catch (error) {
-      messages.lastChild.textContent = "Error: Could not reach server.";
-      console.error(error);
-    }
-  }
-});
-
+  });
 </script>
 
 </body>
