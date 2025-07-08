@@ -1,0 +1,131 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Healthish Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="layout">
+  <div class="sidebar">
+    <div>
+      <h2>MediConnect</h2>
+      <div class="nav-item active"><img src="home.png">Dashboard</div>
+      <div class="nav-item"><img src="report.png">Reports</div>
+      <div class="nav-item"><img src="goals.png">Goals</div>
+      <div class="nav-item"><img src="remainders.png">Reminders</div>
+    </div>
+    <div class="nav-item"><img src="log out.png">Log out</div>
+  </div>
+
+  <!-- ✅ Wrap main + right panel inside this dashboard wrapper -->
+  <div class="dashboard-wrapper">
+
+    <div class="main">
+      <div class="top-bar">
+        <h1>Dashboard Overview</h1>
+      </div>
+
+      <div class="card" style="grid-column: span 3;">
+        <h2>Hello Kasturi Bangar,</h2>
+        <p>Have a nice day and don’t forget to take care of your health!</p>
+      </div>
+
+      <div class="dashboard-cards">
+        <div class="card">
+          <h3>Steps Taken</h3>
+          <img src="step taken.png">
+          <p class="highlight">202 / 3000</p>
+        </div>
+        <div class="card">
+          <h3>Calories Burned</h3>
+          <img src="cal.png">
+          <p class="highlight">408 kcal</p>
+        </div>
+        <div class="card">
+          <h3>Water Taken</h3>
+          <img src="water taken.png">
+          <p class="highlight">87 litres</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Hours of sleep</h3>
+          <img src="sleep.png">
+          <p class="highlight">3:30 mins yesterday</p>
+          <p>12% increment</p>
+        </div>
+        <div class="card">
+          <h3>Goals Achieved</h3>
+          <img src="chart.png">
+          <p class="highlight">86%</p>
+          <p>You have achieved 86% of your goals this month</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="reminder-box">
+          <h3>Reminders</h3>
+          <img src="shape.png">
+          <p>48 min Stretching</p>
+        </div>
+        <div class="report-box">
+          <h3>Reports</h3>
+          <img src="weight.png">
+          <p>Weight loss – 80% decrease</p>
+          <img src="weight gain.png">
+          <p>General health – 76% increase</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ This right-panel is now beside main -->
+    <div class="right-panel">
+      <div class="profile-card">
+        <img class="avatar" src="https://i.pravatar.cc/100" alt="Profile" />
+        <h3>Charles Robbie</h3>
+        <p>25 years old 📍 New York, USA</p>
+        <div class="vitals">
+          <span><strong>Blood:</strong> O+</span>
+          <span><strong>Height:</strong> 186cm</span>
+          <span><strong>Weight:</strong> 90kg</span>
+        </div>
+      </div>
+
+      <div class="calendar-box">
+        <div class="calendar-header">
+          <h4>March</h4>
+          <button class="add-reminder">+ Add reminder</button>
+        </div>
+        <div class="calendar-dates">
+          <span>Mon</span><span>Tues</span><span>Wed</span><span>Thu</span>
+          <span>Fri</span><span>Sat</span><span>Sun</span>
+          <div class="date-row">
+            <span>9</span><span>10</span><span class="today">11</span><span>12</span>
+            <span>13</span><span>14</span><span>15</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="upcoming-box">
+        <h4>Upcoming</h4>
+        <p><strong>Health appointment</strong><br><small>Mr Dok – 09:20AM to 11:30</small></p>
+        <p><strong>Meeting</strong><br><small>with Tok Dalang – 07:00AM</small></p>
+      </div>
+
+      <div class="workout-box">
+        <h4>Post Workout Sessions</h4>
+        <p><strong>Meditation</strong><br><small>5:00PM – 6:00PM</small><br><small>Coach: Tim Bjorvick</small></p>
+      </div>
+    </div>
+  </div> <!-- end dashboard-wrapper -->
+  </div>
+</body>
+
+</html>
+
+
