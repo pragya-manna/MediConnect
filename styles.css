@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+header {
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  color: #007bff;
+  display: flex;
+}
+.logo img{
+    width: 55px;
+    height:55px;
+    margin-right: 10px;
+}
+.logo span {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #007BFF;
+}
+
+nav a {
+  margin: 0 20px;
+  text-decoration: none;
+  color: #007BFF;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.signup {
+  background-color: #007bff;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 6px;
+}
+
+.hero {
+  background: url("/images/doctor-front.jpg") center/cover no-repeat;
+  height: 500px;
+  position: relative;
+}
+
+.hero .overlay {
+  color: white;
+  background-color: rgba(38, 53, 62, 0.5);
+  height: 100%;
+  text-align: center;
+  padding-top: 60px;
+}
+
+.hero h1 {
+  font-size: 60px;
+  text-align: left;
+  font-family: Lato;
+  font-style: italic;
+  margin-left: 50px;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-top: 20px;
+  text-align: left;
+  margin-left: 50px;
+}
+
+.primary {
+  margin-top: 90px;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-size: 40px;
+  border-radius: 6px;
+  cursor: pointer;
+  
+}
+
+.primary:hover{
+    background-color: #0f395f;
+}
+.about, .appointments, .creators {
+  padding: 40px 30px;
+}
+
+.about p {
+  max-width: 800px;
+  margin: auto;
+  line-height: 4.0;
+}
+.about h2{
+    text-align: center;
+}
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 50px 30px;
+}
+
+.feature-box {
+  width: 500px;
+  height: 200px;
+  background-color: #e9f0ff;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.creators h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.creator-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.creator-card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+}
+
+.creator-card p {
+  text-align: center;
+  margin-top: 10px;
+}
