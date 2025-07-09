@@ -10,11 +10,11 @@
   <header>
     <div class="logo">MediConnect</div>
     <nav>
-      <a href="#">Home</a>
-      <a href="#">Appointment</a>
+      <a href="indexp.html">Home</a>
+      <a href="appointment.html">Appointment</a>
       <a href="#">Dashboard</a>
-      <a href="#">Calculator</a>
-      <a href="#">Log in</a>
+      <a href="index1.html">Calculator</a>
+      <a href="login.html">Log in</a>
       <button class="signup">Sign up</button>
     </nav>
   </header>
@@ -289,5 +289,84 @@ doctors.forEach(doc => {
 });
 
   </script>
+  <!-- Chatbot Icon -->
+<div id="chatbot-icon">
+    <img src="images/Chatbot.png"/>
+</div>
+
+<!-- Chatbot Window -->
+<div id="chatbot-window">
+  <div id="chatbot-header">
+    MediConnect
+    <button id="close-btn">&times;</button>
+  </div>
+  <div id="chatbot-messages">
+    <div class="message model">Hello! How can I help you?</div>
+  </div>
+  <div id="chatbot-input">
+    <input type="text" id="user-input" placeholder="Type your question...">
+    <button id="send-btn">➤</button>
+  </div>
+</div>
+  <script src="script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const chatbotIcon = document.getElementById('chatbot-icon');
+  const chatbotWindow = document.getElementById('chatbot-window');
+  const closeBtn = document.getElementById('close-btn');
+  const sendBtn = document.getElementById('send-btn');
+  const userInput = document.getElementById('user-input');
+  const messages = document.getElementById('chatbot-messages');
+
+  chatbotIcon.addEventListener('click', () => {
+    chatbotWindow.style.display = 'flex';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    chatbotWindow.style.display = 'none';
+  });
+
+  sendBtn.addEventListener('click', handleSend);
+  userInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') handleSend();
+
+  });
+
+  function appendMessage(role, text) {
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('message', role);
+    msgDiv.textContent = text;
+    messages.appendChild(msgDiv);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  async function handleSend() {
+    const question = userInput.value.trim();
+    if (!question) return;
+
+    appendMessage('user', question);
+    userInput.value = '';
+    userInput.focus();
+
+    appendMessage('model', 'Typing...');
+
+    try {
+      const res = await fetch("http://localhost:5000/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question }),
+      });
+
+      const data = await res.json();
+      messages.lastChild.textContent = data.answer;
+
+    } catch (error) {
+      messages.lastChild.textContent = "Error: Could not reach server.";
+      console.error(error);
+    }
+  }
+});
+
+</script>
 </body>
 </html>

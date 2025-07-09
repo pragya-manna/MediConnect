@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Health Calculators</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+        <div class="logo">
+            <img src="images/Logo.png">
+            <span>MediConnect</span>
+        </div>
+        <nav>
+            <a href="indexp.html">Home</a>
+            <a href="appointment.html">Appointment</a>
+            <a href="#">Patient Dashboard</a>
+            <a href="index1.html">Calculator</a>
+            <a href="login.html">Log in</a>
+            <a class="signup" href="login.html">Sign up</a>
+        </nav>
+    </header>
+  <h1>Health Calculators</h1>
+  <div class="calculator-container">
+    <div class="calculator-box">
+      <h2>BMI Calculator</h2>
+      <h4>Check if your weight is healthy.</h4>
+      <a href="bmi.html">Calculate</a>
+    </div>
+    <div class="calculator-box">
+      <h2>Water Intake</h2>
+      <h4>Find your ideal daily water intake.</h4>
+      <a href="water.html">Calculate</a>
+    </div>
+    <div class="calculator-box">
+      <h2>Calorie Needs</h2>
+      <h4>Estimate how many calories you need per day.</h4>
+      <a href="calories.html">Calculate</a>
+    </div>
+    <div class="calculator-box">
+      <h2>Heart & BP</h2>
+      <h4>Check your heart rate and blood pressure.</h4>
+      <a href="heartrate.html">Calculate</a>
+    </div>
+  </div>
+    <!-- Chatbot Icon -->
+<div id="chatbot-icon">
+    <img src="images/Chatbot.png"/>
+</div>
+
+<!-- Chatbot Window -->
+<div id="chatbot-window">
+  <div id="chatbot-header">
+    MediConnect
+    <button id="close-btn">&times;</button>
+  </div>
+  <div id="chatbot-messages">
+    <div class="message model">Hello! How can I help you?</div>
+  </div>
+  <div id="chatbot-input">
+    <input type="text" id="user-input" placeholder="Type your question...">
+    <button id="send-btn">➤</button>
+  </div>
+</div>
+  <script src="script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const chatbotIcon = document.getElementById('chatbot-icon');
+  const chatbotWindow = document.getElementById('chatbot-window');
+  const closeBtn = document.getElementById('close-btn');
+  const sendBtn = document.getElementById('send-btn');
+  const userInput = document.getElementById('user-input');
+  const messages = document.getElementById('chatbot-messages');
+
+  chatbotIcon.addEventListener('click', () => {
+    chatbotWindow.style.display = 'flex';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    chatbotWindow.style.display = 'none';
+  });
+
+  sendBtn.addEventListener('click', handleSend);
+  userInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') handleSend();
+
+  });
+
+  function appendMessage(role, text) {
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('message', role);
+    msgDiv.textContent = text;
+    messages.appendChild(msgDiv);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  async function handleSend() {
+    const question = userInput.value.trim();
+    if (!question) return;
+
+    appendMessage('user', question);
+    userInput.value = '';
+    userInput.focus();
+
+    appendMessage('model', 'Typing...');
+
+    try {
+      const res = await fetch("http://localhost:5000/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question }),
+      });
+
+      const data = await res.json();
+      messages.lastChild.textContent = data.answer;
+
+    } catch (error) {
+      messages.lastChild.textContent = "Error: Could not reach server.";
+      console.error(error);
+    }
+  }
+});
+
+</script>
+</body>
+</html>
