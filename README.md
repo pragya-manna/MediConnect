@@ -27,6 +27,7 @@ MediConnect is an online healthcare platform that simplifies how patients connec
 - Water Intake Calculator
 - Calorie Needs Calculator
 - Heart Rate Calculator
+  (All data are saved in database)
 
 ✅ **User Authentication**
 - New users can create an account.
