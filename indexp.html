@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediConnect- Connecting you to trusted ca</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/Logo.png">
+            <span>MediConnect</span>
+        </div>
+        <nav>
+            <a href="indexp.html">Home</a>
+            <a href="#">Appointment</a>
+            <a href="#">Patient Dashboard</a>
+            <a href="#">Calculator</a>
+            <a href="login.html">Log in</a>
+            <a class="signup" href="login.html">Sign up</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="overlay">
+            <h1>Connecting You to Trusted Care</h1>
+            <p>Easy Doctor access, personal dashboards, and smart health guidance.</p>
+            <a href="login.html"><button class="primary">Get Started</button></a>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="about-box">
+        <h2>About Us</h2>
+        <p>
+            <strong>MediConnect</strong> is an online healthcare platform designed to make accessing medical care easy and convenient. We help patients find the right doctors, book appointments seamlessly, and manage their personal health in one secure place. With a personalized dashboard, health calculators, and an integrated AI chatbot, MediConnect empowers users to take control of their health. Our goal is to reduce clinic wait times, simplify healthcare journeys, and make trusted medical support available to everyone, anytime.
+        </p>
+        </div>
+    </section>
+
+    <section class="video">
+  <div class="video-container">
+    <h2>Watch How MediConnect Works</h2>
+    <video controls>
+      <source src="images/MediConnectVideo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</section>
+
+    <section class="features">
+    <h2>Our Features</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <img src="images/Instantbooking.webp" alt="Instant Booking" />
+        <h3>Instant Booking</h3>
+        <p>Book appointments with top doctors in just a few clicks.</p>
+      </div>
+      <div class="feature-card">
+        <img src="images/easyaccess.png" alt="Easy Access" />
+        <h3>Easy Access</h3>
+        <p>Secure dashboards and records, available anytime, anywhere.</p>
+      </div>
+      <div class="feature-card">
+        <img src="images/healthtools.png" alt="Health Tools" />
+        <h3>Health Tools</h3>
+        <p>Use our calculators and trackers to manage your health.</p>
+      </div>
+      <div class="feature-card">
+        <img src="images/ai.png" alt="AI Help" />
+        <h3>AI for Instant Help</h3>
+        <p>24/7 chatbot guidance for your health questions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <button class="faq-question">What is MediConnect?</button>
+      <div class="faq-answer">
+        <p>MediConnect is an online platform for easy doctor access, booking, and personal health management.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Is my data secure?</button>
+      <div class="faq-answer">
+        <p>Yes, we prioritize data security with encryption and secure storage.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">How do I book an appointment?</button>
+      <div class="faq-answer">
+        <p>Simply sign up, log in, and use our easy booking feature in the dashboard.</p>
+      </div>
+    </div>
+  </section>
+
+
+    <section class="creators">
+    <h2>Our Creators</h2>
+    <div class="creator-grid">
+      <div class="creator-card">
+        <img src="images/pragya.jpeg" alt="Pragya Manna" />
+        <p><strong>Pragya Manna</strong></p>
+      </div>
+      <div class="creator-card">
+        <img src="images/kasturi.jpeg" alt="Kasturi Bangar" />
+        <p><strong>Kasturi Bangar</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 MediConnect. All rights reserved.</p>
+  </footer>
+
+   <!-- Chatbot Icon -->
+<div id="chatbot-icon">
+    <img src="images/Chatbot.png"/>
+</div>
+
+<!-- Chatbot Window -->
+<div id="chatbot-window">
+  <div id="chatbot-header">
+    MediConnect
+    <button id="close-btn">&times;</button>
+  </div>
+  <div id="chatbot-messages">
+    <div class="message model">Hello! How can I help you?</div>
+  </div>
+  <div id="chatbot-input">
+    <input type="text" id="user-input" placeholder="Type your question...">
+    <button id="send-btn">➤</button>
+  </div>
+</div>
+  <script src="script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const chatbotIcon = document.getElementById('chatbot-icon');
+  const chatbotWindow = document.getElementById('chatbot-window');
+  const closeBtn = document.getElementById('close-btn');
+  const sendBtn = document.getElementById('send-btn');
+  const userInput = document.getElementById('user-input');
+  const messages = document.getElementById('chatbot-messages');
+
+  chatbotIcon.addEventListener('click', () => {
+    chatbotWindow.style.display = 'flex';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    chatbotWindow.style.display = 'none';
+  });
+
+  sendBtn.addEventListener('click', handleSend);
+  userInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') handleSend();
+
+  });
+
+  function appendMessage(role, text) {
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('message', role);
+    msgDiv.textContent = text;
+    messages.appendChild(msgDiv);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  async function handleSend() {
+    const question = userInput.value.trim();
+    if (!question) return;
+
+    appendMessage('user', question);
+    userInput.value = '';
+    userInput.focus();
+
+    appendMessage('model', 'Typing...');
+
+    try {
+      const res = await fetch("http://localhost:5000/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question }),
+      });
+
+      const data = await res.json();
+      messages.lastChild.textContent = data.answer;
+
+    } catch (error) {
+      messages.lastChild.textContent = "Error: Could not reach server.";
+      console.error(error);
+    }
+  }
+});
+
+</script>
+
+</body>
+</html>
