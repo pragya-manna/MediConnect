@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 // ✅ Your actual Gemini API Key here
-const genAI = new GoogleGenerativeAI("AIzaSyBpTdS4upSl-3UCJ1ZKvz3wij5YDvOPuF8");
+const genAI = new GoogleGenerativeAI("API");
 
 // ✅ Single model instance (use a suitable Gemini model)
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
