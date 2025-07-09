@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MediConnect - Book Your Doctor</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header>
+    <div class="logo">MediConnect</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Appointment</a>
+      <a href="#">Dashboard</a>
+      <a href="#">Calculator</a>
+      <a href="#">Log in</a>
+      <button class="signup">Sign up</button>
+    </nav>
+  </header>
+
+  
+
+  <section class="doctors-section">
+    <h2>Find and Book Your Doctor</h2>
+    <div class="doctor-grid" id="doctorGrid">
+      <!-- Doctor cards will be inserted here by JS -->
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 MediConnect. All rights reserved.</p>
+  </footer>
+
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background-color: #0d1117;
+  color: #c9d1d9;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: #161b22;
+  border-bottom: 1px solid #30363d;
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: #58a6ff;
+  font-weight: bold;
+}
+
+nav a {
+  color: #c9d1d9;
+  margin: 0 15px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #58a6ff;
+}
+
+.signup {
+  background-color: #238636;
+  border: none;
+  padding: 8px 16px;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.signup:hover {
+  background-color: #2ea043;
+}
+
+.hero {
+  background: linear-gradient(to right, #0d1117, #161b22);
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  color: #58a6ff;
+}
+
+.hero p {
+  margin: 20px 0;
+  font-size: 1.1rem;
+}
+
+.get-started {
+  background-color: #238636;
+  color: white;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+
+.doctors-section {
+  padding: 60px 40px;
+  background-color: #0d1117;
+  text-align: center;
+}
+
+.doctors-section h2 {
+  color: #58a6ff;
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.doctor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+.doctor-card {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 1px;
+  padding: 20px;
+  width: 100%;
+  max-width: 280px;
+  text-align: center;
+}
+
+.doctor-card img {
+  width: 200px;
+  height: 250px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 2px solid #58a6ff;
+}
+
+.doctor-card h3 {
+  margin-bottom: 5px;
+  color: #c9d1d9;
+}
+
+.doctor-card p {
+  font-size: 0.9rem;
+  color: #8b949e;
+  margin: 3px 0;
+}
+
+.doctor-card .rating {
+  margin: 10px 0;
+  color: gold;
+}
+
+.doctor-card button {
+  margin-top: 10px;
+  background-color: #256488;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.doctor-card button:hover {
+  background-color: #0b3056;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #161b22;
+  color: #8b949e;
+  border-top: 1px solid #30363d;
+}
+
+  </style>
+  <script>
+    const doctors = [
+  {
+    name: "Dr. Riya Sharma",
+    specialty: "Cardiologist",
+    experience: "10 years",
+    location: "Fortis Hospital, Mumbai",
+    rating: 4.8,
+    image: "1.jpg"
+  },
+  {
+    name: "Dr. Amit Patel",
+    specialty: "Dermatologist",
+    experience: "8 years",
+    location: "AIIMS, Delhi",
+    rating: 4.7,
+    image: "2.jpg"
+  },
+  {
+    name: "Dr. Ananya Iver",
+    specialty: "Pediatrician",
+    experience: "12 years",
+    location: "Narayana Health, Bengaluru",
+    rating: 4.9,
+    image: "3.jpg"
+  },
+  {
+    name: "Dr. Manish Soni",
+    specialty: "Orthopedic Specialist",
+    experience: "9 years",
+    location: "Apollo Hospital, Hyderabad",
+    rating: 4.8,
+    image: "4.avif"
+  },
+  {
+    name: "Dr. Sanya Mehta",
+    specialty: "Gynecologist",
+    experience: "15 years",
+    location: "Jaslok Hospital, Mumbai",
+    rating: 4.9,
+    image: "5.avif"
+  },
+  {
+    name: "Dr. Neha Kapoor",
+    specialty: "General Surgeon",
+    experience: "7 years",
+    location: "Medanta, Gurgaon",
+    rating: 4.7,
+    image: "6.avif"
+  },
+  {
+    name: "Dr. Simran Kaur",
+    specialty: "Neurologist",
+    experience: "11 years",
+    location: "HN Reliance Hospital, Mumbai",
+    rating: 4.9,
+    image: "7.jpg"
+  },
+  {
+    name: "Dr. Karan Joshi",
+    specialty: "Neurologist",
+    experience: "11 years",
+    location: "HN Reliance Hospital, Mumbai",
+    rating: 4.9,
+    image: "8.webp"
+  },
+  {
+    name: "Dr. Anita Patel",
+    specialty: "Neurologist",
+    experience: "11 years",
+    location: "HN Reliance Hospital, Mumbai",
+    rating: 4.9,
+    image: "9.jpg"
+  },
+  {
+    name: "Dr. Vikram Singh",
+    specialty: "Urologist",
+    experience: "13 years",
+    location: "Max Hospital, Delhi",
+    rating: 4.9,
+    image: "10.webp"
+  }
+];
+
+const grid = document.getElementById("doctorGrid");
+
+doctors.forEach(doc => {
+  const card = document.createElement("div");
+  card.className = "doctor-card";
+  card.innerHTML = `
+    <img src="doctor/${doc.image}" alt="${doc.name}">
+    <h3>${doc.name}</h3>
+    <p><strong>${doc.specialty}</strong></p>
+    <p>${doc.experience} experience</p>
+    <p>${doc.location}</p>
+    <div class="rating">⭐ ${doc.rating}</div>
+    <button>Book Appointment</button>
+  `;
+  grid.appendChild(card);
+});
+
+  </script>
+</body>
+</html>
