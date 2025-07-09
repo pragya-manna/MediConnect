@@ -40,6 +40,7 @@ MediConnect is an online healthcare platform that simplifies how patients connec
 
 ✅ Appointment bookings are saved in the database.  
 ✅ Patient details and appointment history are retrieved securely.  
+✅ All data of calculators are stored in database.
 
 We used MySQL to store the booking form application.
 
@@ -59,7 +60,7 @@ We used MySQL to store the booking form application.
 ## ⚙️ Tech Stack
 
 - Frontend: HTML, CSS, JavaScript
-- Backend: Node.js, Express
+- Backend: Node.js, Express, PHP
 - Database: MongoDB, MySQL
 
 ---
